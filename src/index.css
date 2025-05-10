@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --color-main-bg: oklch(20% 0.015 280);
+  --color-deep-gray: oklch(85% 0.015 280);
+  --color-btn-bg: oklch(60% 0.15 340);
+}
+
+.light {
+  --color-main-bg: oklch(95.6% 0.015 100);
+  --color-deep-gray: oklch(26.78% 0.025 296.3);
+  --color-btn-bg: oklch(75.68% 0.233 10.76);
+}
+
+body {
+  background-color: var(--color-main-bg);
+  color: var(--color-deep-gray);
+}
+
+.btn {
+  background-color: var(--color-btn-bg);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.bg-fixed {
+  background-attachment: fixed;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
