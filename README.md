@@ -1,6 +1,6 @@
 ## Live Demo
 
-Access the live application at [https://kaiwa.onrender.com]().
+Access the live application at [here](https://softsell-zeta.vercel.app/).
 
 # Chat Widget and Web App with Dark/Light Mode
 
