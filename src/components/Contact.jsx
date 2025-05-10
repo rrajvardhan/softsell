@@ -10,6 +10,7 @@ export default function ContactForm() {
   })
 
   const [errors, setErrors] = useState({})
+  const [submitted, setSubmitted] = useState(false)
 
   const validate = () => {
     const errs = {}
@@ -18,7 +19,6 @@ export default function ContactForm() {
     else if (!/\S+@\S+\.\S+/.test(formData.email)) errs.email = "Invalid email"
     if (!formData.company.trim()) errs.company = "Company is required"
     if (!formData.license) errs.license = "Select a license type"
-    if (!formData.message.trim()) errs.message = "Message is required"
     return errs
   }
 
@@ -26,7 +26,7 @@ export default function ContactForm() {
     e.preventDefault()
     const errs = validate()
     if (Object.keys(errs).length === 0) {
-      alert("Form submitted!")
+      setSubmitted(true)
       setFormData({
         name: "",
         email: "",
@@ -35,6 +35,7 @@ export default function ContactForm() {
         message: "",
       })
       setErrors({})
+      setTimeout(() => setSubmitted(false), 2000)
     } else {
       setErrors(errs)
     }
@@ -46,6 +47,13 @@ export default function ContactForm() {
         <h2 className="text-4xl text-deep-gray font-semibold mb-6 text-center">
           Let’s Work Together
         </h2>
+
+        {submitted && (
+          <div className="mb-6 text-green-600 bg-green-100 p-4 rounded-lg text-center font-medium transition duration-300">
+            ✅ Your message has been sent successfully!
+          </div>
+        )}
+
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-deep-gray font-semibold mb-2">
@@ -61,7 +69,7 @@ export default function ContactForm() {
               }
             />
             {errors.name && (
-              <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+              <p className="text-btn-bg text-sm mt-1">{errors.name}</p>
             )}
           </div>
 
@@ -79,7 +87,7 @@ export default function ContactForm() {
               }
             />
             {errors.email && (
-              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+              <p className="text-btn-bg text-sm mt-1">{errors.email}</p>
             )}
           </div>
 
@@ -97,7 +105,7 @@ export default function ContactForm() {
               }
             />
             {errors.company && (
-              <p className="text-red-500 text-sm mt-1">{errors.company}</p>
+              <p className="text-btn-bg text-sm mt-1">{errors.company}</p>
             )}
           </div>
 
@@ -118,13 +126,13 @@ export default function ContactForm() {
               <option value="enterprise">Enterprise</option>
             </select>
             {errors.license && (
-              <p className="text-red-500 text-sm mt-1">{errors.license}</p>
+              <p className="text-btn-bg text-sm mt-1">{errors.license}</p>
             )}
           </div>
 
           <div className="mb-6">
             <label className="block text-deep-gray font-semibold mb-2">
-              Message
+              Message (optional)
             </label>
             <textarea
               className="text-deep-gray w-full p-4 rounded-lg border-2 border-deep-gray focus:ring-2 focus:ring-btn-bg focus:outline-none transition duration-300"
@@ -136,7 +144,7 @@ export default function ContactForm() {
               }
             ></textarea>
             {errors.message && (
-              <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+              <p className="text-btn-bg text-sm mt-1">{errors.message}</p>
             )}
           </div>
 
