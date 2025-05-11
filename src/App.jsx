@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Analytics } from "@vercel/analytics/next"
 import HeroSection from "./components/Hero"
 import Navbar from "./components/Navbar"
 import WhyChooseUs from "./components/WhyUs"
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <>
+      <Analytics />
       <Navbar mode={darkMode} setMode={setDarkMode} />
       <HeroSection />
       <HowItWorks />
