@@ -19,6 +19,7 @@
     "flowbite-react": "^0.11.7",
     "framer-motion": "^12.10.4",
     "fs": "^0.0.1-security",
+    "next": "^15.3.2",
     "path": "^0.12.7",
     "react": "^19.1.0",
     "react-bootstrap": "^2.10.9",
